@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTcpSocket>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +17,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void receiveLanguages();
+    void receiveWords();
+    void addNewWord();
+    void addNewLanguage();
+
 private:
     Ui::MainWindow *ui;
+
+    QTcpSocket client;
 };
 #endif // MAINWINDOW_H
